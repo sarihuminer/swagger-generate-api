@@ -1,0 +1,62 @@
+---
+openapi: 3.0.0
+info:
+  title: Simple Inventory API
+  description: This is a simple API
+  contact:
+    email: sh6197174@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+- url: https://virtserver.swaggerhub.com/test79642/Lehumi/1.0.0
+  description: SwaggerHub API Auto Mocking
+- url: /
+  description: SwaggerHub API Auto Mocking
+tags:
+- name: admins
+  description: Secured Admin-only calls
+- name: developers
+  description: Operations available to regular developers
+paths:
+  /calculations:
+    post:
+      tags:
+      - admins
+      summary: calculate 2 numbers
+      description: calculate numbers
+      operationId: calculation
+      parameters:
+      - name: X-Action
+        in: header
+        description: Add,Sub,Mul,Div
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: numbers to calculate
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Numbers'
+      responses:
+        "200":
+          description: item calculated
+        "400":
+          description: invalid input, object invalid
+components:
+  schemas:
+    Numbers:
+      required:
+      - num
+      type: object
+      properties:
+        num1:
+          type: integer
+          example: 1
+        num2:
+          type: integer
+          example: 2

@@ -1,7 +1,7 @@
 # IO.Swagger - ASP.NET Core 2.0 Server
 
 This is a simple API
-
+that generated from swagger.
 ## Run
 
 Linux/OS X:
